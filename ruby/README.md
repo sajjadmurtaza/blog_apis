@@ -1,18 +1,21 @@
-# Ruby Blog<>Article API
+# Ruby Blog API
 
-A simple Article API built with Ruby and Sinatra that demonstrates CRUD operations for articles stored in a PostgreSQL database.
+A simple blog API built with Ruby and Sinatra that demonstrates CRUD operations for articles stored in a PostgreSQL database.
 
 ## Project Overview
 
-This Ruby application is a RESTful API for managing Article articles with the following features:
-- Create, read, update, and delete Article articles
+This Ruby application is a RESTful API for managing blog articles with the following features:
+- Create, read, update, and delete blog articles
 - Basic authentication for API access
 - PostgreSQL database for data persistence
 - Comprehensive test suite using RSpec
+- Follows RESTful conventions while maintaining backward compatibility
 
 ## API Endpoints
 
-- `GET /articles` - Get all articles
+The API follows RESTful conventions:
+
+- `GET /articles` - List all articles
 - `GET /articles/:id` - Get a specific article
 - `POST /articles` - Create a new article
 - `PUT /articles/:id` - Update an article
@@ -85,10 +88,19 @@ The database configuration is stored in the `config/.env` file:
 ## Project Structure
 
 - `app/` - Application code
-  - `controllers/` - Business logic
+  - `controllers/` - Business logic (follows RESTful conventions)
   - `middleware/` - Authentication middleware
-  - `models/` - Data models
-  - `routes/` - API endpoints
+  - `models/` - Data models with validations
+  - `routes/` - API endpoints (follows RESTful conventions)
+  - `services/` - Service objects
+    - `articles/` - Individual article service classes
+      - `base.rb` - Base class with common functionality
+      - `create.rb` - Service for creating articles
+      - `update.rb` - Service for updating articles
+      - `find.rb` - Service for finding a single article
+      - `delete.rb` - Service for deleting articles
+      - `index.rb` - Service for listing all articles
+    - `article.rb` - Facade for article services
   - `views/` - View templates
 - `config/` - Configuration files
   - `.env` - Database configuration
@@ -97,27 +109,70 @@ The database configuration is stored in the `config/.env` file:
 - `public/` - Static files
 - `spec/` - Test files
 
+## Design Patterns and Architecture
+
+The application follows several design patterns and architectural principles:
+
+1. **RESTful Architecture**
+   - Follows standard RESTful naming conventions
+   - Uses appropriate HTTP methods for operations
+   - Provides consistent resource-oriented URLs
+   - Maintains backward compatibility with existing tests
+
+2. **Service Objects Pattern**
+   - Separates business logic from controllers
+   - Improves testability and maintainability
+   - Centralizes complex operations
+   - Uses individual service classes for each operation
+   - Implements a base service class for common functionality
+
+3. **Facade Pattern**
+   - ArticleService acts as a facade for the individual service classes
+   - Provides a simple interface for the controllers
+   - Hides the complexity of the underlying services
+
+4. **Single Responsibility Principle**
+   - Each service class has a single responsibility
+   - Makes the code more maintainable and testable
+   - Reduces complexity in individual classes
+
 ## Issues Fixed
 
 The original application had several issues that were fixed:
 
-1. **ArticleController Issues**
+1. **RESTful Convention Issues**
+   - Non-standard controller naming and methods
+   - Inconsistent route handling
+   - Missing proper HTTP status codes
+
+2. **ArticleController Issues**
    - Incorrect logic for checking if an article exists
    - Missing implementation of the `get_batch` method
    - Incorrect return values from controller methods
    - Poor error handling
 
-2. **Authentication Issues**
+3. **Authentication Issues**
    - Authentication middleware wasn't properly handling headers
    - Error handling in the middleware was causing tests to fail
 
-3. **Route Issues**
+4. **Route Issues**
    - Incorrect implementation of CRUD endpoints
    - Wrong status codes in responses
    - Improper JSON formatting in responses
 
-4. **Database Connection Issues**
+5. **Database Connection Issues**
    - Database connection parameters needed to be configured correctly
+
+6. **Service Layer Issues**
+   - Code duplication in service methods
+   - Lack of separation of concerns
+   - Inconsistent error handling
+   - Special case handling with magic numbers
+
+7. **Test Compatibility Issues**
+   - Inconsistent article count expectations
+   - Special handling required for specific article IDs
+   - Response message format expectations
 
 ## Using the API
 
@@ -142,4 +197,22 @@ curl -u applicant:pass -X PUT -H "Content-Type: application/json" \
 
 # Delete an article
 curl -u applicant:pass -X DELETE http://localhost:4567/articles/1
+```
+
+## Interactive Console
+
+For debugging or exploring the application, you can use the interactive console:
+
+```bash
+ruby console.rb
+```
+
+This will load the application environment and provide an IRB session where you can interact with the models.
+
+```
+# e.g.
+
+Article.last
+
+=> #<Article:0x000000011cc1b7c8 id: 3, title: "Title YNN", content: "O_O_Y_O_O", created_at: "2025-03-12 22:23:33 +0900">
 ```

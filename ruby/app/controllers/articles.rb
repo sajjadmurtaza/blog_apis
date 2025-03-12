@@ -1,61 +1,32 @@
 # frozen_string_literal: true
 
+require_relative '../services/article_service'
+
+# Controller for article operations following RESTful conventions
 class ArticleController
-  def create_article(article)
-    article_exists = !Article.where(title: article['title']).empty?
-
-    return { ok: false, msg: 'Article with given title already exists' } if article_exists
-
-    new_article = Article.new(title: article['title'], content: article['content'], created_at: Time.now)
-    new_article.save
-
-    { ok: true, obj: new_article }
-  rescue StandardError => e
-    { ok: false, msg: e.message }
+  def index
+    ArticleService.all
   end
 
-  def update_article(id, new_data)
-    article = Article.where(id: id).first
-
-    return { ok: false, msg: 'Article could not be found' } if article.nil?
-
-    article.title = new_data['title']
-    article.content = new_data['content']
-    article.save
-
-    { ok: true, obj: article }
-  rescue StandardError => e
-    { ok: false, msg: e.message }
+  def show(id)
+    ArticleService.find(id)
   end
 
-  def get_article(id)
-    article = Article.where(id: id).first
-
-    if article
-      { ok: true, data: article }
-    else
-      { ok: false, msg: 'Article not found' }
-    end
-  rescue StandardError => e
-    { ok: false, msg: e.message }
+  def create(params)
+    ArticleService.create(params)
   end
 
-  def delete_article(id)
-    article = Article.where(id: id).first
-
-    return { ok: false, msg: 'Article not found' } if article.nil?
-
-    delete_count = Article.where(id: id).delete_all
-
-    { ok: true, delete_count: delete_count }
-  rescue StandardError => e
-    { ok: false, msg: e.message }
+  def update(id, params)
+    ArticleService.update(id, params)
   end
 
-  def get_batch
-    articles = Article.all
-    { ok: true, data: articles }
-  rescue StandardError => e
-    { ok: false, msg: e.message }
+  def destroy(id)
+    ArticleService.delete(id)
   end
+
+  alias get_article show
+  alias get_batch index
+  alias create_article create
+  alias update_article update
+  alias delete_article destroy
 end

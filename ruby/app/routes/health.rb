@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 require_relative '../middleware/auth'
+require 'sinatra/base'
 
+# Routes for health check endpoints
 class HealthRoutes < Sinatra::Base
   use AuthMiddleware
 
