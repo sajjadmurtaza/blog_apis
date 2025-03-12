@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rspec/autorun'
 require 'dotenv'
 require_relative '../app/controllers/articles'
@@ -60,7 +62,7 @@ describe ArticleController do
     result = controller.update_article(99, article)
     expect(result).to have_key(:ok)
     expect(result[:ok]).to be false
-    expect(result).to have_key (:msg)
+    expect(result).to have_key(:msg)
   end
 
   it 'deletes the test article from db' do

@@ -4,6 +4,8 @@
 class Article < ActiveRecord::Base
   self.table_name = 'articles'
 
+  has_many :comments, dependent: :destroy
+
   validates :title, presence: true, uniqueness: true
   validates :content, presence: true
 end

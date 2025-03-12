@@ -38,10 +38,10 @@ module Articles
     end
 
     def article_params(params)
-      {
-        title: params['title'],
-        content: params['content']
-      }
+      result = {}
+      result[:title] = params['title'] if params.key?('title')
+      result[:content] = params['content'] if params.key?('content')
+      result
     end
   end
 end
