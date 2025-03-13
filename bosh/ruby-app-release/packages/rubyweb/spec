@@ -4,4 +4,5 @@ name: rubyweb
 files:
 - ruby-web-app/**/*
 
-dependencies: []
+dependencies:
+- ruby-2.7

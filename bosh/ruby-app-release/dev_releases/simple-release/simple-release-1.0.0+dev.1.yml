@@ -1,0 +1,22 @@
+name: simple-release
+version: 1.0.0+dev.1
+commit_hash: 915c247
+uncommitted_changes: true
+jobs:
+- name: rubyweb
+  version: f1cef4cf4d96a7b1c5bd7dfad65ed4c61810629ead72c1e47bf05a286e58dfb5
+  fingerprint: f1cef4cf4d96a7b1c5bd7dfad65ed4c61810629ead72c1e47bf05a286e58dfb5
+  sha1: sha256:b52aaa32da2a346364f2473f7786eca599b68faf1715b0d8f907bc8a97cea310
+  packages: []
+packages:
+- name: ruby-2.7
+  version: 3d17bdcff3fb49f4b59eb5bc1abd00ac57bf00576ce5db63e2674d5359c75963
+  fingerprint: 3d17bdcff3fb49f4b59eb5bc1abd00ac57bf00576ce5db63e2674d5359c75963
+  sha1: sha256:0f74033f19fd3573c2367689d2c0a595414a0d1e887ba5af2d69e3d0e3b8e58c
+  dependencies: []
+- name: rubyweb
+  version: d6a0913d0e0119f268df62737cad7815f09b7d85a28be562694ea381bb43d1b8
+  fingerprint: d6a0913d0e0119f268df62737cad7815f09b7d85a28be562694ea381bb43d1b8
+  sha1: sha256:4d13273524e3ecd3310e3bf7fdbe615305423c8af5e6742944752a952e19ae9d
+  dependencies:
+  - ruby-2.7

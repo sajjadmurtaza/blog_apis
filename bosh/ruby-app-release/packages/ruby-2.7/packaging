@@ -1,0 +1,13 @@
+set -e -x
+
+echo "Extracting ruby..."
+tar xzf ruby-2.7/ruby-2.7.2.tar.gz
+
+cd ruby-2.7.2
+./configure \
+  --prefix=${BOSH_INSTALL_TARGET} \
+  --disable-install-doc \
+  --with-opt-dir=/var/vcap/packages/ruby-2.7
+
+make
+make install 
