@@ -2,6 +2,7 @@
 
 require_relative '../services/comment_service'
 
+# Controller for comment operations following RESTful conventions
 class CommentController
   def index(article_id = nil)
     CommentService.all(article_id)

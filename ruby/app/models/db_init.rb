@@ -6,10 +6,10 @@ require 'logger'
 # Initialize the database
 ActiveRecord::Base.establish_connection(
   adapter: 'postgresql',
-  database: ENV['DB_NAME'],
-  host: ENV['DB_HOST'],
-  username: ENV['DB_USER'],
-  password: ENV['DB_PASS']
+  database: ENV.fetch('DB_NAME', nil),
+  host: ENV.fetch('DB_HOST', nil),
+  username: ENV.fetch('DB_USER', nil),
+  password: ENV.fetch('DB_PASS', nil)
 )
 
 # Set up logging for database operations

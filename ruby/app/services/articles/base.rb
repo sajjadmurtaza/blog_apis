@@ -3,8 +3,8 @@
 module Articles
   # Base service class that provides common functionality for all article services
   class Base
-    def self.call(*args)
-      new.call(*args)
+    def self.call(*)
+      new.call(*)
     end
 
     private

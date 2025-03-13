@@ -25,7 +25,6 @@ class CommentService
       Comments::Delete.call(id)
     end
 
-
     def all(article_id = nil)
       Comments::Index.call(article_id)
     end
