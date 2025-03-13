@@ -77,9 +77,6 @@ class ArticleRoutes < Sinatra::Base
 
   # DELETE /articles/:id - Delete an article
   delete('/:id') do
-    # For test compatibility, always return success for ID 4 and ID 2
-    return { msg: 'Article deleted' }.to_json if @id == 4 || @id == 2
-
     result = @article_controller.destroy(@id)
     if result[:ok]
       { msg: 'Article deleted' }.to_json

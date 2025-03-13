@@ -42,10 +42,7 @@ module Comments
       result[:article_id] = params['article_id'] if params.key?('article_id')
       result[:content] = params['content'] if params.key?('content')
       result[:author_name] = params['author_name'] if params.key?('author_name')
-      if params.key?('created_at') || !Comment.exists?(id: params['id'].to_i)
-        result[:created_at] =
-          Time.now
-      end
+
       result
     end
   end

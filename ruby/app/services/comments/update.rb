@@ -9,7 +9,7 @@ module Comments
       comment = find_comment(id)
       return comment_not_found_error unless comment
 
-      if params['article_id'] && params['article_id'] != comment.article_id
+      if params['article_id'] && params['article_id'].to_i != comment.article_id
         article = find_article(params['article_id'])
         return article_not_found_error unless article
       end
