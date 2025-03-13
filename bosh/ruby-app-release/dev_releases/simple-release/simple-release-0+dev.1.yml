@@ -1,16 +1,22 @@
 name: simple-release
 version: 0+dev.1
-commit_hash: 4cd8397
+commit_hash: 3f638bb
 uncommitted_changes: true
 jobs:
 - name: rubyweb
-  version: feba9d7c05695d0ba43fa247f30ff84331f1a7799457e62fd07ae02d8c594576
-  fingerprint: feba9d7c05695d0ba43fa247f30ff84331f1a7799457e62fd07ae02d8c594576
-  sha1: sha256:965edfca8a4688ddcb29543f8751b15965bf485d72e7e3912a581b293520810c
+  version: f1cef4cf4d96a7b1c5bd7dfad65ed4c61810629ead72c1e47bf05a286e58dfb5
+  fingerprint: f1cef4cf4d96a7b1c5bd7dfad65ed4c61810629ead72c1e47bf05a286e58dfb5
+  sha1: sha256:df1b141e02ad8244cc23f007dc86a47122ede5a27aede8bc0399ffa2fb19d76d
   packages: []
 packages:
-- name: rubyweb
-  version: 2f85c51b7df387e95d39f2df703069be05548f59f5bd5dfedef25eed71b285ee
-  fingerprint: 2f85c51b7df387e95d39f2df703069be05548f59f5bd5dfedef25eed71b285ee
-  sha1: sha256:72c0fa0392da84f3ff64f3dbacc907696b8822031cb5aabfac4baabdbf3e1dca
+- name: ruby-2.7
+  version: 3d17bdcff3fb49f4b59eb5bc1abd00ac57bf00576ce5db63e2674d5359c75963
+  fingerprint: 3d17bdcff3fb49f4b59eb5bc1abd00ac57bf00576ce5db63e2674d5359c75963
+  sha1: sha256:1d034fa1e8867f547ff2728a6de078aa5a909108ccbf0b7befb5732f1912b2de
   dependencies: []
+- name: rubyweb
+  version: d6a0913d0e0119f268df62737cad7815f09b7d85a28be562694ea381bb43d1b8
+  fingerprint: d6a0913d0e0119f268df62737cad7815f09b7d85a28be562694ea381bb43d1b8
+  sha1: sha256:97764ed674bdeb4783015862c035f03b91f70f1ce8e377a72e54f92a76b0d34e
+  dependencies:
+  - ruby-2.7
