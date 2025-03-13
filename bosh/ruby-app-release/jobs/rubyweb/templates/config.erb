@@ -1,16 +1,14 @@
--
+---
+port: <%=
+  port = p("port")
 
-port = <%=
+  if port < 8000 or port > 8081
+    raise "Invalid port number"
+  end
 
-port = p("port")
+  unless (port.eql? 8080) || (port.eql? 8081)
+    raise "Wrong port number"
+  end
 
-if port < 1024 or port > 4000
-  raise "Invalid port number"
-end
-
-if (port.eql? 8080) || (port.eql? 8081)
-  raise "Wrong port number"
-end
-
-port
+  port
 %>

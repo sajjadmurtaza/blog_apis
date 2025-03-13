@@ -1,0 +1,12 @@
+{
+    "director_id": "14be6b48-8902-4eaa-4adc-e3ee36067fb7",
+    "installation_id": "1f16b1ea-8397-45a8-4297-da62b794b70e",
+    "current_vm_cid": "",
+    "current_stemcell_id": "",
+    "current_disk_id": "",
+    "current_release_ids": null,
+    "current_manifest_sha": "",
+    "disks": null,
+    "stemcells": null,
+    "releases": null
+}

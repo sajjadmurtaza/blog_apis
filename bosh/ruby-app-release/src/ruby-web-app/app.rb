@@ -3,10 +3,17 @@ require "pstore"
 require 'yaml'
 
 configure do
-	# config = YAML.load_file('/var/vcap/jobs/rubyweb/cfg/config.yml')
+	# Try to load config from BOSH job if available, otherwise use default
+	config_path = '/var/vcap/jobs/rubyweb/tmp/config.yml'
+	if File.exist?(config_path)
+		config = YAML.load_file(config_path)
+		port = config['port']
+	else
+		port = 8181 # Default for local development
+	end
 
 	set :bind, '0.0.0.0'
-    set :port, 8181
+    set :port, port
 
 	class Item
 		attr_reader :name, :type

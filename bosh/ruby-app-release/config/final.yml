@@ -1,3 +1,6 @@
+---
+name: simple-release
+
 blobstore:
   provider: local
   options:
